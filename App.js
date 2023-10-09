@@ -1,25 +1,47 @@
-/*
-<div id="parent">
-    <div id="child">
-        <h1>Im H1 tag</h1>
-        <h2>Im H2 tag</h2>
-    </div>
-    <div id="child2">
-        <h1>Im H1 tag</h1>
-        <h2>Im H2 tag</h2>
-    </div>
-</div>
-*/
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const parent = React.createElement("div", {id:"parent"}, 
-[React.createElement("div", {id:"child"},
-[React.createElement("h1", {}, "Hey this is Krithi"), React.createElement("h2", {}, "Im H2 tag")]),
-React.createElement("div", {id:"child2"},
-[React.createElement("h1", {}, "Im H1 tag"), React.createElement("h2", {}, "Im H2 tag")])]);
-console.log(parent);
-// const heading = React.createElement("h1", {id:"heading"}, "Hello World from React!");
-// console.log(heading);
+//JSX - Babel transpiles it , HTML like or XML Like (transpiled before going to JS Engine) -> Parcel - Babel converts to React.createElement => Object => HTML Element
+// const jsxheading = (<h1 className="head">
+// Namaste React from JSX 🚀</h1>);
+// console.log(jsxheading);
+
+const element = <span>Hey this is kirthi</span>
+
+
+//Component Composition
+
+const number = 1000;
+
+
+const title = (
+    <h1 className="head" tabIndex="5">
+    {element}
+    Title from react element
+    </h1>
+);
+
+const Title = () =>(
+    <h1 className="head" tabIndex="5">
+    {element}
+    Title from function
+    </h1>
+);
+
+const Footer = () =>  <h1 className="footer" tabIndex="5"> AK </h1>
+
+
+const HeadingComponent = () =>(
+    <div id="container">
+    <h2>{number + 100}</h2>
+    {title}
+    {Title()}
+    <h1>Namaste React Functional Component</h1>
+    <Footer></Footer>
+    </div>
+)
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+
+root.render(<HeadingComponent/>);
